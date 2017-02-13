@@ -2,11 +2,11 @@ const Command = require('../struct/Command');
 const commands = require('../func/commands');
 
 module.exports = new Command('reload')
-    .setCategory('')
-    .setUsage('')
+    .setCategory('dev')
+    .setUsage('Reload a command')
     .alias([])
     .inDm(false)
-    .userPerms([])
+    .userPerms(["DEV"])
     .botPerms([])
     .setArgs([{type:"string", desc:"Command Name"}])
     .setExec((message, bot) => {
