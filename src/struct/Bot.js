@@ -11,8 +11,10 @@ const Bot = () => {
         loadDB().then((data) => {
 
             let bot = new Discord.Client({
+
                 disabledEvents: ['TYPING_START'],
                 fetchAllMembers: true
+                
             })
 
             bot.config = new GuildConfig(data)
