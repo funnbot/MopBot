@@ -12,9 +12,13 @@ const args = require('./func/args')
 
 const Alias = require('./func/alias')
 
+const mention = require('./func/mention')
+
 bot.on('message', message => {
 
     message = Message(message)
+
+    if (mention(message)) return
 
     let alias = Alias(commands)
 

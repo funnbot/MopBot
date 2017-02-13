@@ -40,6 +40,20 @@ class GuildConfig {
     })
   }
 
+  guildLeave(id) {
+    r.table('config').filter({id}).run(this.conn, (err, res) => {
+      if (err) return console.log(err)
+      res.toArray((err, data) => {
+        if (err) return console.log(err)
+        if (data.length > 0) {
+          r.table('config').filter({id}).delete().run(this.conn, (err, done) => {
+            if (err) return console.log(err)
+          })
+        }
+      })
+    })
+  }
+
   getString(id, name, def) {
     if (this.guild[id] && this.guild[id][name]) return this.guild[id][name]
     else return def
