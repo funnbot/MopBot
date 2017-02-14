@@ -10,7 +10,9 @@ const Argument = (message, cmd) => {
 
         args.forEach((a, i) => {
 
-            if (!message.param[i+1] && !failed && a.opt ? !a.opt : true) failed = i
+            let opt = !!a.opt ? !a.opt : true
+
+            if (!message.param[i+1] && !failed && opt) failed = i
 
         })
 

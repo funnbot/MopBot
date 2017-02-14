@@ -20,20 +20,29 @@ module.exports = new Command('help')
 
         Object.keys(cmds).forEach((c, i) => {
 
-            if (!cat[cmds[c].category]) cat[cmds[c].category] = ["\`"+cmds[c].category+"\'"]
+            if (cmds[c].category !== "dev") {
 
-            cat[cmds[c].category].push("  • "+cmds[c].name+":: "+ cmds[c].usage)
-            
+                if (!cat[cmds[c].category]) cat[cmds[c].category] = ["\`" + cmds[c].category + "\'"]
+
+                cat[cmds[c].category].push("  • " + cmds[c].name + ":: " + cmds[c].usage)
+
+            }
+
         })
 
         Object.keys(cat).forEach((c, i) => {
 
             text.push(cat[c].join('\n'))
-            
+
         })
 
         text.push('```')
 
-        message.channel.sendMessage(text, {split:{ prepend:"```asciidoc\n", append:"```"}})
+        message.channel.sendMessage(text, {
+            split: {
+                prepend: "```asciidoc\n",
+                append: "```"
+            }
+        })
 
     })
