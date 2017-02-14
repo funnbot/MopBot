@@ -1,8 +1,7 @@
 const Command = require('../struct/Command')
 const fs = require('fs')
-const wrapper = require('canvas-text-wrapper')
-const Canvas = require('canvas'),
-    Image = Canvas.Image
+const wrapper = require('canvas-text-wrapper').CanvasTextWrapper
+const Canvas = require('canvas')
 
 module.exports = new Command('nut')
     .setCategory('meme')
@@ -17,22 +16,29 @@ module.exports = new Command('nut')
     }])
     .setExec((message, bot) => {
 
-        fs.readFile('./src/images/nut.jpg', (err, file) => {
-            if (err) return console.log(err)
+        let canvas = new Canvas(640, 640)
+        let ctx = canvas.getContext('2d')
 
-            let img = new Image
+        let Img = Canvas.Image
+        let img = new Img
+
+        fs.readFile('./src/images/nut.png', (err, file) => {
+            if (err) return console.log(err)
+            
             img.src = file
 
-            if (img.onload === null) return 
-
-            let canvas = new Canvas(img.width, img.height)
-            let ctx = canvas.getContext('2d')
-
-            ctx.drawImage(img, 0, 0, img.width, img.height)
+            ctx.drawImage(img, 0, 0, 640, 640)
             ctx.strokeStyle = "#000000"
+            ctx.font = "40x Blippo, fantasy"
+
+            let te = ctx.measureText(message.suffix)
+
+            if (te.width > 597) return message.channel.sendMessage("**Your message was too long**")
 
             wrapper(canvas, message.suffix, {
-                font: "100px Blippo, fantasy"
+                font: "40px Blippo, fantasy",
+                paddingX: 13,
+                paddingY: 13
             })
 
             canvas.toBuffer((err, buff) => {
