@@ -9,7 +9,7 @@ module.exports = new Command('createcard')
     .userPerms([])
     .botPerms([])
     .setArgs([])
-    .setExec((message, bot) => {
+    .setExec(function(message, bot) {
 
         if (!message.param[1]) return message.channel.sendMessage("**To create a card**: `" + message.prefix + "question card text | answer card text`")
 
