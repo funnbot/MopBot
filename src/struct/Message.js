@@ -24,6 +24,8 @@ function Message(message) {
 
     message.suffix = split.join(" ")
 
+    message.send = message.channel.sendMessage.bind(message.channel)
+
     return message;
 
 }

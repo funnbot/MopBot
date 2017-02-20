@@ -21,7 +21,7 @@
     "decode": "^0.3.0",
     "decode-html": "^1.0.2",
     "del": "^2.2.2",
-    "discord.js": "github:hydrabolt/discord.js#indev",
+    "discord.js": "^11.0.0",
     "erlpack": "github:hammerandchisel/erlpack#master",
     "fast-json-parse": "^1.0.2",
     "fs-extra": "^1.0.0",
