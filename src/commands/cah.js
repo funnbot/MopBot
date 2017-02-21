@@ -11,11 +11,13 @@ let functions = {
 
         if (!games[id(msg)]) {
 
+            if (checkPermission(msg)) return msg.send("**You need the `MANAGE_MESSAGES` permission to start a CAH game.")
+
             games[id(msg)] = new CardsAgainstHumanity(message)
 
         } else {
 
-           return msg.channel.sendMessage("**A game is already running on this server.**")
+           return msg.channel.sendMessage("**A game is already running on this server. Use `"+msg.prefix+"cah join` to join.**")
 
         }
     },
@@ -31,6 +33,11 @@ let functions = {
     stats: (msg, bot) => {
 
     }
+}
+
+function checkPermission(message) {
+    if (message.channel.permissionsFor(message.member).hasPermission("MANAGE_MESSAGES")) return false
+    return true
 }
 
 module.exports = new Command('cah')
