@@ -42,7 +42,10 @@ module.exports = class Cah {
 
     }
 
-    removeMember = (message) => !this.members[message.author.id] ? delete this.members[message.author.id] : false
+    removeMember(message) {
+        if (!this.members[message.author.id]) return delete this.members[message.author.id]
+        else return false
+    }
 
 
 
