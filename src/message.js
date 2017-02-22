@@ -45,6 +45,8 @@ bot.on('message', message => {
 
         if (check.u.has) return check.u.miss.length > 0 ? message.channel.sendMessage(text.message.missuser + '`' + check.u.miss + '`') : 0
 
+        if (cmd.deleteCommand && message.channel.permissionsFor(message.guild.member(bot.user)).hasPermission("MANAGE_MESSAGES")) message.delete()
+
     } else {
 
         if (cmd.userPermissions.indexOf('dev') > -1 && cmd.userPermissions.indexOf('DEV') > -1 && message.author.id !== "163735744995655680") return
