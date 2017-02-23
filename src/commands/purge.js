@@ -10,6 +10,6 @@ module.exports = new Command('purge')
     .setArgs([])
     .setExec((message, bot) => {
 
-        
+        let num = parse
 
     })

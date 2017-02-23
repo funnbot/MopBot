@@ -2,9 +2,9 @@ const Command = require('../struct/Command');
 const Discord = require('discord.js')
 
 module.exports = new Command('partners')
-    .setCategory('')
-    .setUsage('')
-    .alias([])
+    .setCategory('misc')
+    .setUsage('List the people who helped me with MopBot')
+    .alias(["contributors"])
     .inDm(false)
     .userPerms([])
     .botPerms([])
