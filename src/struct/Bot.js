@@ -19,6 +19,12 @@ const Bot = () => {
 
             bot.config = new GuildConfig(data)
 
+            bot.embed = Discord.RichEmbed
+
+            bot.on('ready', () => {
+                console.log("Shard #"+bot.shard.id+" active with "+bot.guilds.size+" guilds")
+            })
+
             return resolve(bot);
 
         }).catch(err => reject(err))
