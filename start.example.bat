@@ -1,0 +1,1 @@
+TOKEN=02937hrcm029uhmc0w9uhfn023h0q9hc.mmmsmsmsm DICT=2039201927390217 forever src/ShardManager.js
